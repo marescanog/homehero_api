@@ -1,15 +1,6 @@
 <?php
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
-
-$configuration = [
-    'settings' => [
-        'displayErrorDetails' => true,
-    ],
-];
-$c = new \Slim\Container($configuration);
-$app = new \Slim\App($c);
 
 $app->get('/users/all', function(Request $request, Response $response){
     try{
@@ -32,9 +23,7 @@ $app->get('/users/all', function(Request $request, Response $response){
             "data" => $users,
         );
 
-        $newResponse = $response->withHeader('Content-type', 'application/json');
-
-        echo json_encode($data, JSON_PRETTY_PRINT);
+        echo json_encode($data);
 
     } catch (PDOException $e){
         $status = 500;
@@ -44,7 +33,8 @@ $app->get('/users/all', function(Request $request, Response $response){
             "data" => array(),
             "error" => $e->getMessage(),
         );
-        $newResponse = $response->withHeader('Content-type', 'application/json');
         echo json_encode($error);
     }
 });
+
+?>
