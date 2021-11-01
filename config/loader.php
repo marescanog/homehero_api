@@ -20,15 +20,15 @@ $container = $app->getContainer();
 
 // $routeContainers($container);
 
-$container['UserController'] = function(){
-    return new UserController;
-};
+// $container['UserController'] = function(){
+//     return new UserController;
+// };
 
 require_once  __DIR__ . '/routes.php';
 
-$middleware = require_once  __DIR__ . '/middleware.php';
+// $middleware = require_once  __DIR__ . '/middleware.php';
 
-$middleware($app);
+// $middleware($app);
 
 // COMMENT OUT $dotenv LINES IF PUSH TO PROD
 // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
