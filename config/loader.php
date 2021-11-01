@@ -16,19 +16,15 @@ $container = $app->getContainer();
 
 // require_once  __DIR__ . '/errHandler.php';
 
-// $routeContainers = require_once  __DIR__ . '/routecontainers.php';
+$routeContainers = require_once  __DIR__ . '/routecontainers.php';
 
-// $routeContainers($container);
-
-// $container['UserController'] = function(){
-//     return new UserController;
-// };
+$routeContainers($container);
 
 require_once  __DIR__ . '/routes.php';
 
-// $middleware = require_once  __DIR__ . '/middleware.php';
+$middleware = require_once  __DIR__ . '/middleware.php';
 
-// $middleware($app);
+$middleware($app);
 
 // COMMENT OUT $dotenv LINES IF PUSH TO PROD
 // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
