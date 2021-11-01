@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Requests;
+
 class CustomRequestHandler{
     public static function getParam($request, $key, $default=null){
         $postParams = $request->getParsedBody();
