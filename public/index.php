@@ -16,9 +16,9 @@ $app  = new \Slim\App($c);
 
 // $app = new \Slim\App;
 
-// COMMENT OUT $dotenv LINES IF PUSH TO PROD
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
-$dotenv->load();
+// // COMMENT OUT $dotenv LINES IF PUSH TO PROD
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
+// $dotenv->load();
 
 $app->get('/', function (Request $request, Response $response, array $args) {
     $response->getBody()->write("HomeHero Api successfully connected to ".$_ENV['DB_HOST']);

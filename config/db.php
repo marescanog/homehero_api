@@ -2,10 +2,10 @@
 
 class DB {
     public function connect(){
-        // NOTE: When running POSTman, require config code. Otherwise, comment out when pushing to prod
-        require_once __DIR__ . '/../vendor/autoload.php';
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
-        $dotenv->load();
+        // // NOTE: When running POSTman, require config code. Otherwise, comment out when pushing to prod
+        // require_once __DIR__ . '/../vendor/autoload.php';
+        // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
+        // $dotenv->load();
 
         // // DEVELOPMENT VARIABLES
         // $conn_host = 'localhost';
