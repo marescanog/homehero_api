@@ -12,13 +12,17 @@ $app = new App($settings);
 
 $container = $app->getContainer();
 
-require_once  __DIR__ . '/errHandler.php';
+// require_once  __DIR__ . '/errHandler.php';
 
 require_once  __DIR__ . '/db.php';
 
+// $middleware = require_once  __DIR__ . '/middleware.php';
+
+// $middleware($app);
+
 // COMMENT OUT $dotenv LINES IF PUSH TO PROD
-// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
-// $dotenv->load();
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
+$dotenv->load();
 
 $app->get('/', function (Request $request, Response $response, array $args) {
     $response->getBody()->write("HomeHero Api successfully connected to ".$_ENV['DB_HOST']);
