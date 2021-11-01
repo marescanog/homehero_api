@@ -6,13 +6,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/db.php';
 
-// COMMENT OUT $dotenv LINES IF PUSH TO PROD
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
-$dotenv->load();
-
-$db_host = $_ENV['DB_HOST'];
-
 $app = new \Slim\App;
+
+// COMMENT OUT $dotenv LINES IF PUSH TO PROD
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
+// $dotenv->load();
 
 $app->get('/', function (Request $request, Response $response, array $args) {
     $response->getBody()->write("Hello ".$_ENV['DB_HOST']);

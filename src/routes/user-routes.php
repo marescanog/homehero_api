@@ -12,23 +12,25 @@ $c = new \Slim\Container($configuration);
 $app = new \Slim\App($c);
 
 $app->get('/users/all', function(Request $request, Response $response){
-    $sql = "SELECT * FROM hh_user";
-    $status = 400;
-
     try{
         $db = new DB();
         $conn = $db->connect();
-    
+        
+        $status = 400;
+        $message = "";
+
+        $sql = "SELECT * FROM hh_user";
         $stmt = $conn->query($sql);
         $users = $stmt->fetchAll();
         $db = null;
-
-        $data = array(
-            'users' => $users,
-            "message" => "Success"
-        );
-
+        
+        $message = "";
         $status = 200;
+        $data = array(
+            "message" => $message,
+            "status" => $status,
+            "data" => $users,
+        );
 
         $newResponse = $response->withHeader('Content-type', 'application/json');
 
@@ -37,9 +39,11 @@ $app->get('/users/all', function(Request $request, Response $response){
     } catch (PDOException $e){
         $status = 500;
         $error = array(
-            "message" => $e->getMessage()
+            "message" => "There was an error processing your request",
+            "status" => $status,
+            "data" => array(),
+            "error" => $e->getMessage(),
         );
-
         $newResponse = $response->withHeader('Content-type', 'application/json');
         echo json_encode($error);
     }
