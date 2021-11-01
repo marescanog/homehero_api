@@ -1,9 +1,10 @@
 <?php
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
+// use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/db.php';
 
 // COMMENT OUT $dotenv LINES IF PUSH TO PROD
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."\\..\\");
@@ -23,5 +24,8 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
     $response->getBody()->write("Hello, $name");
     return $response;
 });
+
+// User Routes
+require __DIR__ . '/../src/routes/user-routes.php';
 
 $app->run();
